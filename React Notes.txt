@@ -1,0 +1,59 @@
+React notes:
+   - React component names MUST BE CAPITALIZED!
+      - This seems to be the case for all React components that aren't the root React component
+      - But I'm assuming even though lower case React root components work, we want to capitalize them anyways
+   - Components
+      - Small pieces of code that make up a reusable part of a web application
+      - USUALLY need a root element in them, for example a <div/> or something to hold the React componants contents
+         - OR an array of components can be used instead of a root element
+            - Example:
+               const Footer = () => {
+                  return [
+                     <h1>Greetings!</h1>,
+                     <CustomComponent name="Tylor" age="25" />,
+                     <Footer />
+                  ]
+               }
+            - Returning an array of elements looks ugly though and can cause issues, instead we can use "fragments"
+               - Fragments are empty HTML tags that are used to wrap multiple elements when not using a root element
+               - Example:
+                  const App = () => {
+                     return (
+                        <>
+                           <h1>Greetings!</h1>
+                           <CustomComponent name="Tylor" age="26" />
+                           <Footer />
+                        </>
+                     )
+                  }
+      - Example:
+          const Hello = () => {
+            return (
+              <div>
+                <p>The variable 'Hello' is a React component!</p>
+              </div>
+            )
+          }
+   - Properties (props)
+      - Passing data to components is know as passing a 'prop'
+      - So any data passed to a component is a 'prop'
+      - Example:
+          const Hello = (props) => {
+            return (
+              <div>
+                <p>Printing out the 'props' passed to this component: {props.name}!</p> // Here I'm using the name of the data passed (name) and displaying it
+              </div>
+            )
+          }
+          const App = () => {
+            return (
+              <div>
+                <p>Greetings!</p>
+                <Hello name="Tylor" /> // Here I'm calling the data passed to the React componant 'name'
+              </div>
+            )
+          }
+
+Conventions:
+   - Using a root React component called 'App' that ties all other components together
+   - ADD MORE AS THEY COME!!
