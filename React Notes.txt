@@ -3,6 +3,7 @@ React notes:
       - This seems to be the case for all React components that aren't the root React component
       - But I'm assuming even though lower case React root components work, we want to capitalize them anyways
    - Components
+      - Do NOT create React components inside of other React components!
       - Small pieces of code that make up a reusable part of a web application
       - USUALLY need a root element in them, for example a <div/> or something to hold the React componants contents
          - OR an array of components can be used instead of a root element

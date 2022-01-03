@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 
+const Display = props => <div>{props.value}</div>
+
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>
+    {text}
+  </button>
+)
+
 const App = () => {
   const [value, setValues] = useState(10)
 
@@ -10,10 +18,10 @@ const App = () => {
 
   return (
     <div>
-      {value}
-      <button onClick={setValue(10000)}>set to 10000</button>
-      <button onClick={setValue(0)}>set to 0</button>
-      <button onClick={setValue(value + 1)}>increment</button>
+      <Display value={value} />
+      <Button handleClick={setValue(10000)} text='set to 10000' />
+      <Button handleClick={setValue(0)} text='set to 0' />
+      <Button handleClick={setValue(value + 1)} text='increment' />
     </div>
   )
 }
