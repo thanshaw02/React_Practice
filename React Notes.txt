@@ -53,6 +53,11 @@ React notes:
               </div>
             )
           }
+   - State
+      - It is FORBIDDEN in React to update states directly, so you CAN do it but you SHOULDN'T!
+      - Add more if needed, I kind of forgot to take notes here since I was coding lol..
+   - Hooks
+      - Do NOT call the "useState()" function from inside of a loop, a conditional expression, or any place that is not a function defining component
 
 Conventions:
    - Using a root React component called 'App' that ties all other components together
