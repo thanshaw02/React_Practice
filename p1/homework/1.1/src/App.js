@@ -1,43 +1,80 @@
 import React from 'react'
+import Courses from './components/Course'
 
-const Header = (props) => {
-  console.log('Header componenet:', props.course) // DEBUGGING
-  return (
-    <div>
-      <h1>{props.course}</h1>
-    </div>
-  )
+const App = () => {
+  const courses = [
+    {
+      id: 1,
+      name: 'Half Stack application development',
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7,
+          id: 2
+        },
+        {
+          name: 'State of a component',
+          exercises: 14,
+          id: 3
+        },
+        {
+          name: 'Redux',
+          exercises: 11,
+          id: 4
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: 'Node.js',
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: 'C++',
+      parts: [
+        {
+          name: 'Threading',
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: 'Objects',
+          exercises: 4,
+          id: 2
+        },
+        {
+          name: 'Networking',
+          exercises: 2,
+          id: 3
+        }
+      ]
+    }
+  ]
+
+  return <Courses courses={courses} />
 }
 
-const Part = (props) => {
-  console.log('Part component', props.part) // DEBUGGING
-  return (
-    <div>
-      <p>{props.part.name} {props.part.exercises}</p>
-    </div>
-  )
-}
+export default App
 
-const Content = (props) => {
-  console.log('Content component:', props.parts) // DEBUGGING
-  return (
-    <div>
-      <Part part={props.parts[0]} />
-      <Part part={props.parts[1]} />
-      <Part part={props.parts[2]} />
-    </div>
-  )
-}
-
-const Total = (props) => {
-  console.log('Total component:', props.parts) // DEBUGGING
-  return (
-    <div>
-      <p>Number of exercises {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</p>
-    </div>
-  )
-}
-
+// Old 'App' component
+/*
 // Root component that holds all of the React components
 const App = () => {
   const course = {
@@ -66,5 +103,4 @@ const App = () => {
     </div>
   )
 }
-
-export default App
+*/

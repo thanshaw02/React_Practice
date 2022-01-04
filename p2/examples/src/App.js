@@ -1,14 +1,62 @@
+import React, { useState } from 'react'
+import Note from './components/Note'
 
-function App() {
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes)
+  const [newNote, setNewNote] = useState('a new note...')
+  const [showAll, setShowAll] = useState(true)
+
+  // This is executed when something is submitted in the form below
+  const addNote = (event) => {
+    event.preventDefault()
+    const noteObject = {
+      content: newNote,
+      date: new Date().toISOString(),
+      important: Math.random() < 0.5,
+      id: notes.length + 1,
+    }
+
+    setNotes(notes.concat(noteObject))
+    setNewNote('')
+  }
+
+  // This is executed whenever text is changed in the <input /> field
+  const handleNoteChanged = (event) => {
+    console.log(event.target.value)
+    setNewNote(event.target.value)
+  }
+
+  // If the value of 'showAll' is true then all notes will be displayed
+  // Otherwise only the notes with the attribute 'important == true' will be filtered out of the array and displayed
+  const notesToShow = showAll ? notes : notes.filter(note => note.important)
+
   return (
     <div>
-      <p>Hello world!</p>
+      <h1>Notes</h1>
+      <div>
+        <button onClick={() => setShowAll(!showAll)}>
+          Show {showAll ? 'important' : 'all'} notes
+        </button>
+      </div>
+      <ul>
+        {notesToShow.map(note => 
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
+      <form onSubmit={addNote}>
+        <input
+          value={newNote}
+          onChange={handleNoteChanged}
+        />
+        <button type='submit'>Save</button>
+      </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 
+/*
 // Testing out higher-order-functions in JS
 const arr = [
   { name: 'Tylor', age: 25 },
@@ -34,3 +82,4 @@ console.log('Age\'s of the people:', ages);
 console.log('Age\'s of the people multiplied by 5:', agesMultiplied);
 console.log('Printing each person out:', printedPeople);
 console.log('Sum of all ages using \'.reduce()\':', allAgesReduce);
+*/
